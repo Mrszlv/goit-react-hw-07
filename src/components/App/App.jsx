@@ -4,17 +4,19 @@ import { FaAddressBook } from "react-icons/fa";
 import ContactForm from "../ContactForm/ContactForm";
 import SearchBox from "../SearchBox/SearchBox";
 import ContactList from "../ContactList/ContactList";
+import Loader from "../Loader/Loader";
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchContacts } from "../../redux/contactsOps";
 import { selectFilteredContacts } from "../../redux/contactSlice";
+import { selectError, selectIsLoading } from "../../redux/selectors";
 
 const App = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectFilteredContacts);
-  const loading = useSelector((state) => state.contacts.loading);
-  const error = useSelector((state) => state.contacts.error);
+  const loading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -30,8 +32,8 @@ const App = () => {
       </div>
       <ContactForm />
       <SearchBox />
-      {loading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
+      {loading && !error && <Loader />}
+      {error}
       <ContactList contacts={contacts} />
     </div>
   );
