@@ -10,28 +10,26 @@ const ContactList = ({ contacts }) => {
 
   return (
     <ul className={s.list}>
-      <div className={s.contCard}>
-        {contacts.map((contact) => (
-          <li key={contact.id} className={s.item}>
-            <div className={s.contact}>
-              <span className={s.name}>
-                {" "}
-                <IoPerson /> {contact.name}:
-              </span>
-              <span className={s.number}>
-                {" "}
-                <RiPhoneFill /> {contact.number}
-              </span>
-            </div>
-            <button
-              className={s.btn}
-              onClick={() => dispatch(deleteContact(contact.id))}
-            >
-              <MdDelete />
-            </button>
-          </li>
-        ))}
-      </div>
+      {contacts.map((contact) => (
+        <li key={contact.id} className={s.item}>
+          <div className={s.contact}>
+            <span className={s.name}>
+              {" "}
+              <IoPerson /> {contact.name}:
+            </span>
+            <span className={s.number}>
+              {" "}
+              <RiPhoneFill /> {contact.number}
+            </span>
+          </div>
+          <button
+            className={s.btn}
+            onClick={() => dispatch(deleteContact(contact.id))}
+          >
+            <MdDelete />
+          </button>
+        </li>
+      ))}
     </ul>
   );
 };

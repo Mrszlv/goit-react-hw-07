@@ -13,14 +13,16 @@ const SearchBox = () => {
 
   return (
     <div className={s.wrapp}>
-      <p className={s.text}>Find contacts by name</p>
-      <input
-        className={s.input}
-        type="text"
-        value={filter}
-        onChange={handleSearch}
-        placeholder="Enter name..."
-      />
+      <label className={s.label}>
+        Find contacts by name
+        <input
+          className={s.input}
+          type="text"
+          value={filter}
+          onChange={handleSearch}
+          placeholder="Enter name..."
+        />
+      </label>
     </div>
   );
 };
