@@ -9,7 +9,7 @@ import Loader from "../Loader/Loader";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchContacts } from "../../redux/contactsOps";
-import { selectFilteredContacts } from "../../redux/contactSlice";
+import { selectFilteredContacts } from "../../redux/contactsSlice";
 import { selectError, selectIsLoading } from "../../redux/selectors";
 
 const App = () => {
